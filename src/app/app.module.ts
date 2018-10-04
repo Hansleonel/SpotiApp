@@ -1,11 +1,18 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
-import { SearchComponent } from './components/search/search.component';
-import { ArtistComponent } from './components/artist/artist.component';
-import { NavbarComponent } from './shared/navbar/navbar.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './components/home/home.component';
+import {SearchComponent} from './components/search/search.component';
+import {ArtistComponent} from './components/artist/artist.component';
+import {NavbarComponent} from './shared/navbar/navbar.component';
+
+// TODO IMPORTANDO ROUTERMODULE PARA EL CORRECTO USO DE LAS RUTAS
+import {RouterModule} from '@angular/router';
+import {ROUTES} from './app.routes';
+
+// TODO IMPORTACION PARA PODER REALIZAR PETICIONES HTTP
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +23,14 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     NavbarComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    // TODO IMPORTACION PARA REALIZAR PETICIONES
+    HttpClientModule,
+    // TODO USO DEL RUOUTERMODULE
+    RouterModule.forRoot(ROUTES, {useHash: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
