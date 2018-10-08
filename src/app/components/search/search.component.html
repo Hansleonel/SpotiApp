@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col">
+    <!-- TODO como vemos usaremos la funciona propia del ANGULR (keyup)
+         TODO ademas usamos una referencia local con " # " para darle una especie de alias
+         TODO en este caso usamos "#nombreArtista" y le agregamos el ".value"
+         TODO para conocer usar el valor ingresado en el input -->
+    <input #nombreArtista type="text" (keyup)="BuscarArtista(nombreArtista.value)" class="form-control"
+           placeholder="Buscar Artista">
+  </div>
+</div>
+
+<div class="card-columns m-5">
+
+  <!-- TODO como vemos no necesitamos usar "{}" para recorrer el arreglo artistaEncontrad[]
+       TODO puesto que estamos dentro de un *ngFOR
+       TODO RECORDAR QUE "ARTISTA" EQUIVALE AL ARREGLO "ITEMS" DENTRO DE "ARTITS", la respuesta del API-->
+  <div *ngFor="let artista of artistaEncontrado" class="card">
+
+
+    <!-- TODO para acceder a un elemento dentro del arreglo que es en si mismo es un arreglo
+         TODO como en este caso el arreglo "Images[]"
+         TODO ademas accedemos al elemento url de la primera posicion es decir la posicion [0]
+         TODO dentro del arreglo "images[]"
+         TODO la siguiente linea equivale a "resultadoBusquedaArtist.artists.items.images[0].url"-->
+    <img class="card-img-top" [src]="artista.images[0].url" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+
+        <!-- TODO Como vemos necesitamos usar las llaves puesto que la variable que usaremos no esta dentro de una
+             TODO directiva estructural como *ngFOR -->
+        {{artista.name}}
+      </h5>
+
+    </div>
+  </div>
+</div>
