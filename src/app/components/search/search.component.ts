@@ -11,6 +11,9 @@ export class SearchComponent implements OnInit {
 
   artistaEncontrado: any [] = [];
 
+  // TODO creando una propiedad para mostrar el loading component en caso la informacion este cargando
+  loadingSearch: boolean;
+
   // TODO declarando o inyectando el servicio, esta vez usaremos la funcion getArtist del servicio spotify.SERVICE.TS
   constructor(private spotifyService: SpotifyService) {
   }
@@ -19,6 +22,8 @@ export class SearchComponent implements OnInit {
   // TODO creando la funcion BuscarArtista que esta presente y es usada dentro del html
   // TODO dicha funcion recibira un valor en este caso "nombreArtista"
   BuscarArtista(nombreArtista: string) {
+    this.loadingSearch = true;
+
     console.log(nombreArtista);
 
 
@@ -35,6 +40,8 @@ export class SearchComponent implements OnInit {
         // TODO al usar PIPES y MAP dentro del service debemos de usar la respuesta de dicho servicio de la sigueinte manera
         // TODO esto se da puesto que la respuesta del service ya hico el filtr de "resultadoBusqueda.artist.item"
         this.artistaEncontrado = resultadoBusquedaArtist;
+
+        this.loadingSearch = false;
       });
 
   }

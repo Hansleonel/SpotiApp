@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
 import {SearchComponent} from './components/search/search.component';
 import {ArtistComponent} from './components/artist/artist.component';
-import {NavbarComponent} from './shared/navbar/navbar.component';
+import {NavbarComponent} from './components/shared/navbar/navbar.component';
 
 // TODO IMPORTANDO ROUTERMODULE PARA EL CORRECTO USO DE LAS RUTAS
 import {RouterModule} from '@angular/router';
@@ -17,13 +17,22 @@ import {HttpClientModule} from '@angular/common/http';
 // TODO IMPORTACION DE SERVICIOS QUE NO TENGA "providerIn: 'root' " DENTRO DEL INJECTABLE"
 import {SpotifyService} from './services/spotify.service';
 
+// TODO IMPORTACION DE PIPES
+import {NoimagePipe} from './pipes/noimage.pipe';
+import { CardsComponent } from './components/cards/cards.component';
+import { LoadingComponent } from './components/shared/loading/loading.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     SearchComponent,
     ArtistComponent,
-    NavbarComponent
+    NavbarComponent,
+    // TODO IMPORTANCION DEL PIPE, SI SE CREO DESDE EL COMAND ESTA IMPORTACION ES AUTOMATICA
+    NoimagePipe,
+    CardsComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

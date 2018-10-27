@@ -1,0 +1,36 @@
+<div class="card-columns m-5 animated fadeIn">
+
+  <!-- TODO como vemos no necesitamos usar "{}" para recorrer el arreglo nuevasCanciones[]
+       TODO puesto que estamos dentro de un *ngFOR-->
+
+  <!-- TODO COMO ESTAMOS USANDO INPUT DENTRO DE ESTE COMPONENTE HIJO REUTILIZABLE DEBEMOS DE MODIFICAR EL NOMBRE DE LA VARIABLE
+       TODO "nuevasCanciones" POR EL NOMBRE DEL INPUT EN ESTE CASO ITEMS
+       TODO ADEMAS POR SER ESTE COMPONENT REUTILIZABLE ES PREFERIBLE CAMBIAR EL NOMBRE DEL LET "cancion" POR UN NOMBRE
+       TODO MAS GENERAL EN ESTE CASO "item" -->
+  <!-- <div *ngFor="let cancion of nuevasCanciones" class="card"> -->
+  <!-- TODO la clase "puntero" personaliza el card para que se vea clickeable, dicha clase esta deficina en el styles-->
+  <div (click)="verArtista(item)" *ngFor="let item of items" class="card puntero">
+
+    <!-- TODO para acceder a un elemento dentro del arreglo que es en si mismo es un arreglo
+         TODO como en este caso el arreglo "Images[]"
+         TODO ademas accedemos al elemento url de la primera posicion es decir la posicion [0]
+         TODO dentro del arreglo "images[]" -->
+    <!-- TODO como usaremos el metodo de validacion con PIPE la siguiente linea sera comentad -->
+    <!-- <img class="card-img-top" [src]="cancion.images[0].url" alt="Card image cap"> -->
+    <img class="card-img-top" [src]="item.images | noimage" alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">
+        <!-- TODO Como vemos necesitamos usar las llaves puesto que la variable que usaremos no esta dentro de una
+             TODO directiva estructural como *ngFOR -->
+        {{item.name}}
+      </h5>
+      <p class="card-text">
+        <!-- TODO Como vemos para acceder al nombre de los artistas de ese album que estan dentro del elemento artists[]
+             TODO que es un arreglo dentro del elemento CANCION usaremos un *ngFOR
+             TODO una vez accedemos al elemento "artista"que representa a cada recorrido del arreglo
+             TODO podemos acceder al nombre de dicho artista -->
+        <span *ngFor="let artista of item.artists" class="badge badge-pill badge-primary">{{artista.name}}</span>
+      </p>
+    </div>
+  </div>
+</div>

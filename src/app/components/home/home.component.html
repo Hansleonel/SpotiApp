@@ -1,26 +1,40 @@
-<div class="card-columns">
+<!-- TODO Usando el componente loading, en este caso solo se mostrar mientas loading tenga el valor de TRUE-->
+<app-loading *ngIf="loading"></app-loading>
 
-  <!-- TODO como vemos no necesitamos usar "{}" para recorrer el arreglo nuevasCanciones[]
-       TODO puesto que estamos dentro de un *ngFOR-->
+<!-- TODO para poder enviar informacion de un componente padre en este caso home.component.ts a un componente hijo
+     TODO en este caso cards.component.ts devemos de poner entre "[]"
+     TODO el nombre de la propiedad declara en el componente hijo en este caso "[items]"
+     TODO recordar que si dicha propiedad debe de ser el mismo tipo que el arreglo o variable que se esta enviando -->
+<app-cards [items]="nuevasCanciones"></app-cards>
+
+<!-- TODO PODEMOS COMENTAR TODO ESTE CODIGO PUESTO QUE USAREMOS UN COMPONENTE REUTILIZABLE EN ESTE CASO CARDS.COMPONENT
+     TODO CON SU RESPECTIVA ETIQUETA EN ESTE CASO <app-cards></app-cards> -->
+
+<!--<div class="card-columns">
+
+  &lt;!&ndash; TODO como vemos no necesitamos usar "{}" para recorrer el arreglo nuevasCanciones[]
+       TODO puesto que estamos dentro de un *ngFOR&ndash;&gt;
   <div *ngFor="let cancion of nuevasCanciones" class="card">
-    <!-- TODO para acceder a un elemento dentro del arreglo que es en si mismo es un arreglo
+    &lt;!&ndash; TODO para acceder a un elemento dentro del arreglo que es en si mismo es un arreglo
          TODO como en este caso el arreglo "Images[]"
          TODO ademas accedemos al elemento url de la primera posicion es decir la posicion [0]
-         TODO dentro del arreglo "images[]" -->
-    <img class="card-img-top" [src]="cancion.images[0].url" alt="Card image cap">
+         TODO dentro del arreglo "images[]" &ndash;&gt;
+    &lt;!&ndash; TODO como usaremos el metodo de validacion con PIPE la siguiente linea sera comentad &ndash;&gt;
+    &lt;!&ndash; <img class="card-img-top" [src]="cancion.images[0].url" alt="Card image cap"> &ndash;&gt;
+    <img class="card-img-top" [src]="cancion.images | noimage" alt="Card image cap">
     <div class="card-body">
       <h5 class="card-title">
-        <!-- TODO Como vemos necesitamos usar las llaves puesto que la variable que usaremos no esta dentro de una
-             TODO directiva estructural como *ngFOR -->
+        &lt;!&ndash; TODO Como vemos necesitamos usar las llaves puesto que la variable que usaremos no esta dentro de una
+             TODO directiva estructural como *ngFOR &ndash;&gt;
         {{cancion.name}}
       </h5>
       <p class="card-text">
-        <!-- TODO Como vemos para acceder al nombre de los artistas de ese album que estan dentro del elemento artists[]
+        &lt;!&ndash; TODO Como vemos para acceder al nombre de los artistas de ese album que estan dentro del elemento artists[]
              TODO que es un arreglo dentro del elemento CANCION usaremos un *ngFOR
              TODO una vez accedemos al elemento "artista"que representa a cada recorrido del arreglo
-             TODO podemos acceder al nombre de dicho artista -->
+             TODO podemos acceder al nombre de dicho artista &ndash;&gt;
         <span *ngFor="let artista of cancion.artists" class="badge badge-pill badge-primary">{{artista.name}}</span>
       </p>
     </div>
   </div>
-</div>
+</div>-->
