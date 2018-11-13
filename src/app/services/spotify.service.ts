@@ -22,7 +22,7 @@ export class SpotifyService {
 
     // TODO headers correspondientes para realizar las peticiones
     const headers = new HttpHeaders({
-      'Authorization': 'Bearer BQCOqu_iD1SUBV6Or1XmgcWKbLDhQCCN6hpcQxKoys3mfiuYHHlT3846wEg2usKYpIWL9FJPDxsqVzHTkCI'
+      'Authorization': 'Bearer BQAN29tq62NW425G23BqeGT_BjXcZ3DIBKKIFYuJak2ldnb7bXW49L4dc383hR2_Uf_6eDPeLhYipipeLg8'
     });
 
     return this.http.get(url, {headers});
@@ -74,7 +74,7 @@ export class SpotifyService {
 
 
   // TODO creando un nuevo servicio para la busqueda de Artistas
-  getArtist(artistaBuscado: string) {
+  getArtists(artistaBuscado: string) {
     // TODO creando la cabecera
     // TODO COMO CENTRALIZAREMOS LAS PETICIONES CON EL METODO "GETQUERY"
     // TODO PODEMOS COMENTAR LAS SIGUIENTES LINEAS PUESTO QUE SE USARAN EN DICHO METODO
@@ -102,5 +102,20 @@ export class SpotifyService {
       .pipe(map(resultadoBusquedaArtistAPI => {
         return resultadoBusquedaArtistAPI['artists'].items;
       }));
+  }
+
+  // TODO SERVICIO PARA OBTENER LOS DATOS DE 1 ARTISTA CON SU RESPECTIVO ID. NO ES NECESARIO PASARLO POR EL MAP
+  // TODO PUESTO QUE LOS DATOS QUE RESPONDE EL QUERY SON LOS QUE SE USARAN, EN ESTE CASO EN EL ARTIST.COMPONENT
+  getArtist(idArtista: string) {
+    return this.getQuery(`artists/${idArtista}`);
+  }
+
+  // TODO SERVICIO PARA OBTENER LOS TOPTRACKS DE CADA ARTISTA POR ID, ADEMAS RECORDAR QUE EL CAMPO PAIS ES OBLIGATORIO
+  // TODO ADEMAS COMO VEMOS USAREMOS PIPES Y MAP PARA EL FITRADO DE DATOS
+  getTopTracks(idArtista: string) {
+    return this.getQuery(`artists/${idArtista}/top-tracks?country=us`)
+      // TODO FILTRAMOS DE ESTA MANERA PUESTO QUE LA RESPUESTA DE ESTE SERVICIO ES UN OBJETO QUE CONTIENE UN ARRAY DE OBJETOS EN ESTE CASO
+      // TODO "tracks" Y NOSOTROS NECESITAMOS SOLO DICHO ARRAY DE OBJETOS
+      .pipe(map(data => data['tracks']));
   }
 }

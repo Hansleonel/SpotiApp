@@ -30,7 +30,7 @@ export class SearchComponent implements OnInit {
     // TODO USANDO EL SERVICIO DEL SERVICE.TS
     // TODO usando la funcion getArtist() y enviando el nombre del artista "nombreArtista" que a su vez obtuvo su valor
     // TODO con la ayuda del alias "#nombreArtista" dentro del html
-    this.spotifyService.getArtist(nombreArtista)
+    this.spotifyService.getArtists(nombreArtista)
       .subscribe((resultadoBusquedaArtist: any) => {
         // console.log(resultadoBusquedaArtist.artists.item);
 
