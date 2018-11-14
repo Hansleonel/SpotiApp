@@ -21,6 +21,7 @@ import {SpotifyService} from './services/spotify.service';
 import {NoimagePipe} from './pipes/noimage.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './components/shared/loading/loading.component';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoadingComponent } from './components/shared/loading/loading.component'
     // TODO IMPORTANCION DEL PIPE, SI SE CREO DESDE EL COMAND ESTA IMPORTACION ES AUTOMATICA
     NoimagePipe,
     CardsComponent,
-    LoadingComponent
+    LoadingComponent,
+    DomseguroPipe
   ],
   imports: [
     BrowserModule,
